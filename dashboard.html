@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - SoccerIQ</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- Fixed Header Bar -->
+  <header class="header-bar">
+    <h1>SoccerIQ Dashboard</h1>
+    <div class="hamburger-menu" id="hamburger-menu" onclick="toggleDropdown()">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </div>
+  </header>
+
+  <!-- Sidebar Container - This will be dynamically populated -->
+  <div id="sidebar-container"></div>
+
+  <!-- Main Content Area -->
+  <div class="main-content">
+    <h2>Welcome to SoccerIQ</h2>
+    <p>Select an option from the sidebar to get started.</p>
+  </div>
+
+  <!-- Feather Icons CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Load Sidebar
+      document.getElementById('sidebar-container').innerHTML = fetch('sidebar.html')
+        .then(response => response.text())
+        .then(html => {
+          document.getElementById('sidebar-container').innerHTML = html;
+
+          // Re-initialize feather icons after sidebar is injected
+          feather.replace();
+
+          // Add event listener for mobile dropdown toggle
+          document.getElementById('hamburger-menu').addEventListener('click', toggleDropdown);
+        });
+
+      // Mobile dropdown toggle functionality
+      function toggleDropdown() {
+        const dropdown = document.getElementById('mobile-dropdown');
+        dropdown.classList.toggle('active');
+      }
+    });
+  </script>
+</body>
+</html>

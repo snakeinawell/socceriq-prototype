@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Skill Development — SoccerIQ</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <!-- Fixed Header Bar -->
+  <header class="header-bar">
+    <h1>SoccerIQ Dashboard</h1>
+    <div class="hamburger-menu" id="hamburger-menu">
+      <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+    </div>
+  </header>
+
+  <!-- Sidebar Container (injected) -->
+  <div id="sidebar-container"></div>
+
+  <!-- Main Content Area -->
+  <div class="main-content">
+    <h2>Skill Development</h2>
+    <p>Choose a skill below to get started:</p>
+
+    <!-- Top Skill Cards Section -->
+    <div class="skill-cards-container">
+      <div class="skill-card">
+        <video src="skills/v-turn.mp4" autoplay muted loop></video>
+        <div class="skill-info">
+          <span class="skill-name">V-Turn</span>
+          <span class="skill-badge beginner">Beginner</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <video src="skills/l-turn.mp4" autoplay muted loop></video>
+        <div class="skill-info">
+          <span class="skill-name">L-Turn</span>
+          <span class="skill-badge intermediate">Intermediate</span>
+        </div>
+      </div>
+      <!--<div class="skill-card">
+        <video src="skills/sole-roll.mp4" autoplay muted loop></video>
+        <div class="skill-info">
+          <span class="skill-name">Sole Roll</span>
+          <span class="skill-badge advanced">Advanced</span>
+        </div>
+      </div>-->
+      <!-- add more as needed -->
+    </div>
+
+    <!-- Placeholder for Video Upload / Analysis UI -->
+    <div class="upload-section">
+      <p>(Upload &amp; analysis UI goes here.)</p>
+    </div>
+  </div>
+
+  <!-- Feather Icons & Sidebar Injection + Dropdown Toggle -->
+  <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      fetch('sidebar.html')
+        .then(res => res.text())
+        .then(html => {
+          document.getElementById('sidebar-container').innerHTML = html;
+          feather.replace();
+          document.getElementById('hamburger-menu')
+            .addEventListener('click', () => {
+              document.getElementById('mobile-dropdown')
+                .classList.toggle('active');
+            });
+        })
+        .catch(err => console.error('Sidebar load error:', err));
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>V-Turn Detail Mock-Up</title>
+  <style>
+    body {
+      background: #000;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    .detail-container {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+    .detail-column {
+      flex: 1;
+      background: #111;
+      border-radius: 8px;
+      padding: 10px;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .detail-column h3 {
+      margin-bottom: 10px;
+      font-size: 1.2rem;
+    }
+    /* Left: example video */
+    .example-video video {
+      width: 100%;
+      border-radius: 4px;
+    }
+    /* Center: wireframe + keypoints */
+    .overlay-keypoints canvas {
+      width: 100%;
+      height: auto;
+      background: #222;
+      border-radius: 4px;
+      margin-bottom: 10px;
+    }
+    .keypoints-list {
+      list-style: none;
+      padding-left: 0;
+      text-align: left;
+      width: 100%;
+    }
+    .keypoints-list li {
+      margin-bottom: 6px;
+      font-size: 0.9rem;
+    }
+    /* Right: animated rings placeholders */
+    .rings {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+    .ring {
+      position: relative;
+      width: 100px;
+      height: 100px;
+      border: 8px solid #333;
+      border-top-color: #4caf50;
+      border-radius: 50%;
+      animation: spin 2s linear infinite;
+    }
+    .ring-label {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 0.9rem;
+      text-align: center;
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    /* Actions & Coaching Points */
+    .detail-actions {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+    }
+    .detail-actions .buttons {
+      display: flex;
+      gap: 20px;
+    }
+    .detail-actions button {
+      background: #4caf50;
+      border: none;
+      padding: 10px 20px;
+      color: #000;
+      font-weight: bold;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .coaching-points {
+      list-style: disc inside;
+      max-width: 600px;
+      text-align: left;
+      margin-top: 10px;
+    }
+    .coaching-points li {
+      margin-bottom: 6px;
+      font-size: 0.9rem;
+    }
+
+    /* Mobile: stack columns */
+    @media screen and (max-width: 768px) {
+      .detail-container {
+        flex-direction: column;
+      }
+      .detail-column {
+        width: 100%;
+      }
+      .detail-actions .buttons {
+        flex-direction: column;
+        width: 100%;
+      }
+      .detail-actions button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h2>V-Turn Analysis</h2>
+
+  <div class="detail-container">
+    <!-- Left column: example video -->
+    <div class="detail-column example-video">
+      <h3>Example</h3>
+      <video src="example-vturn.mp4" controls muted loop></video>
+    </div>
+
+    <!-- Center column: wireframe overlay + keypoints -->
+    <div class="detail-column overlay-keypoints">
+      <h3>Your Form</h3>
+      <canvas id="wireframe-canvas" width="300" height="168"></canvas>
+      <ul class="keypoints-list">
+        <li>• Left knee: 135°</li>
+        <li>• Hip rotation: 45°</li>
+        <li>• Head stable</li>
+      </ul>
+    </div>
+
+    <!-- Right column: animated rings -->
+    <div class="detail-column rings">
+      <div class="ring">
+        <div class="ring-label">Knee<br>75%</div>
+      </div>
+      <div class="ring">
+        <div class="ring-label">Hip<br>60%</div>
+      </div>
+      <div class="ring">
+        <div class="ring-label">Balance<br>82%</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Actions & Coaching Points -->
+  <div class="detail-actions">
+    <div class="buttons">
+      <button>Upload Your Video</button>
+      <button>Record Live</button>
+    </div>
+    <ul class="coaching-points">
+      <li>Bend your knees slightly more for power.</li>
+      <li>Rotate hips fully on the turn.</li>
+      <li>Keep your head and chest over the ball.</li>
+    </ul>
+  </div>
+</body>
+</html>
